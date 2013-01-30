@@ -1,6 +1,5 @@
 <?php
 add_action('init','add_taxonomies');
-add_action('widgets_init','portfolio_sidebars');
 add_action('after_setup_theme','portfolio_setup');
 add_action('init','create_post_type');
 
