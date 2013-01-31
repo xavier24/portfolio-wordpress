@@ -148,24 +148,73 @@ background-color:#DDD;
 .content:hover .legende{
 	display:block;
 }
-.contact h5{
+.contact h1{
 color:#ffffff;
 text-transform:uppercase;
 padding:5px 0 5px 5px;
 border-bottom:1px solid #161712;
 border-top:1px solid #161712;
 }
+form p{
+margin:0;
+}
 label{
 display:inline-block;
 color:#bbbbbb;
 font-size:0.9em;
-border-top:1px solid #262626;
-border-bottom:1px solid #161712;
 padding:10px 0;
+vertical-align:top;
 }
-.input_text{padding:5px;background-color:#262626;color:white;border-bottom:1px double #171717;border-top:1px double #171717;border-left:1px double #333333;border-right:1px double #333333;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
-.input_text:focus,#message:focus{border:1px double #D68400;border-radius:3px;-moz-border-radius:2px;-webkit-border-radius:2px;}
-.message{width:100%;background-color:#262626;border-bottom:1px double #171717;border-top:1px double #171717;border-left:1px double #333333;border-right:1px double #333333;color:white;font-family:Calibri,"Myriad Pro",sans-serif;font-size:1.6em;}
+#nom{
+width:145px;
+}
+label.objet{
+border-top:1px solid #161712;
+}
+input.input_text{
+	padding:5px;
+	background-color:#262626;
+	color:white;
+	border-bottom:1px double #171717;
+	border-top:1px double #171717;
+	border-left:1px double #333333;
+	border-right:1px double #333333;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+input.input_text:focus,#message:focus{
+	border:1px double #D68400;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+textarea.message{
+	width:100;
+	background-color:#262626;
+	border-bottom:1px double #171717;
+	border-top:1px double #171717;
+	border-left:1px double #333333;
+	border-right:1px double #333333;
+	color:white;
+	font-family:Calibri,"Myriad Pro",sans-serif;
+	font-size:1.5em;
+}
+.wpcf7-response-output{
+	color:white;
+	padding-bottom: 20px;
+	font-weight: bold;
+}
+.wpcf7-validation-errors{
+	display:none;
+}
+.wpcf7-not-valid-tip-no-ajax{
+	margin:0;
+	color:#FF3700;
+	padding-bottom:10px;
+}
+.captchac{vertical-align:top; margin-top:5px;}
+.captchar{margin-left:5px;margin-top:6px;}
 .boutton:hover{color:#FF9D00;background-color:#222;}
 .boutton{background-color:#292929;border:1px solid #111;border-left:1px solid #555;border-right:1px solid #555;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;color:#bbbbbb;}
 #footer{height:45px;clear:both;background-color:#111;border-top:4px double #070707;padding:5px 10px;z-index:2;position:relative;}
@@ -189,13 +238,13 @@ body{position:relative;max-width:925px;margin-top:40px;border-radius:4px;-moz-bo
 #contenu.reference{padding:45px 25px 40px 180px;} 
 #contenu.contact{padding:45px 25px 0 180px;} 
 label{width:49.7%;} 
-label span{padding-top:5px;padding-right:10px;} 
-.objet{border:none;width:100%;} 
-#email{display:inline-block;width:79%;} 
+label .label{padding-top:5px;padding-right:10px;} 
+label.objet{width:100%;} 
+#email{display:inline-block;width:77%;} 
 #objet{display:inline-block;width:89.5%;} 
 .textarea{clear:both;width:96%;padding-right:10px;border-top:none;} 
-.message{width:100%;height:125px;float:left;padding:7px 7px;} 
-.boutton{float:right;margin:10px 40px 10px 0;padding:4px 7px;width:100px;}
+textarea.message{width:100%;height:125px;float:left;padding:7px 7px;} 
+.boutton{float:right;margin:-15px 40px 0 20px;padding:4px 7px;width:100px;}
 }
 
 @media only screen and (min-width:480px) and (max-width:767px){
