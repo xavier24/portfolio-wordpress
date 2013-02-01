@@ -60,11 +60,10 @@
 						}
 					};
 		var elementClicked = function(e){
-						if(!$(this).hasClass("url_projet")){
 							e.preventDefault();
 							currentIndex = elements.indexOf($(this).attr("href") );
 							openBox();
-						}
+						
 					};
 		var openBox = function(){
 						if($(window).width()>480){
@@ -156,13 +155,13 @@
 		}
 		//execution de setup
 		setup();
-		
+		console.log($(this));
 		return this.each(function(){
-		
-							elements.push($(this).attr("href"));
-							$(this).on("click.heplBox",elementClicked);// espace de nom : click.helpBox => permet de specifier un evenement pour qu'il ne puisse pas etre desactivé sans le specifier a nouveau
-							
-							});
+							if(!$(this).hasClass("url_projet")){
+								elements.push($(this).attr("href"));
+								$(this).on("click.heplBox",elementClicked);// espace de nom : click.helpBox => permet de specifier un evenement pour qu'il ne puisse pas etre desactivé sans le specifier a nouveau
+							}	
+						});
 	};
 	
 	//lien externe dans nouvel onglet
