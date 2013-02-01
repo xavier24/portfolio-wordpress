@@ -86,6 +86,7 @@ background-color:#222;
 #contenu.cv ul{
 text-align:center;
 padding-bottom:20px;
+padding-top:20px;
 }
 #contenu.cv li{
 list-style-position:inside;
@@ -102,6 +103,9 @@ text-align:center;
 font-size:1.8em;
 background-image:url('images/sprite.png');
 height:14px;
+}
+.cv h1, .cv h2{
+	padding:5px;
 }
 .unDemi{background-position:-129px -33px;}
 .un{background-position:-113px -48px;}
@@ -128,7 +132,34 @@ background-color:#DDD;
 }
 #contenu.reference a{
 	text-decoration:none;
-} 
+}
+.url_projet{
+	font-size:1.2em;
+}
+.url_projet:hover{
+	color:#FF3700;
+}
+.close{
+	border:1px solid #333;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+    color: #333333;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 25px;
+    line-height: 25px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    width: 25px;
+}
+.close:hover,.close:active{
+	background-color:#333;
+	color:white;
+}
 .content {
 	position:relative;
 	height:150px;

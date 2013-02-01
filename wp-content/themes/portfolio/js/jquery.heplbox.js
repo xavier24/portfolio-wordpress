@@ -42,7 +42,7 @@
 						}
 						//verifier si conteiner existe sinon la creer
 						if (!$conteiner.size() ){// si conteiner est different de contenir qqch(.size() )
-							$conteiner = $('<div class"'+ settings.cssPrefix+'conteiner"></div>')
+							$conteiner = $('<div class"'+ settings.cssPrefix+'conteiner"><p class="close">X</p></div>')
 											.css({
 													background:"white url("+settings.loaderGifURL+") center no-repeat",
 													position:"absolute",
@@ -60,9 +60,11 @@
 						}
 					};
 		var elementClicked = function(e){
-						e.preventDefault();
-						currentIndex = elements.indexOf($(this).attr("href") );
-						openBox();
+						if(!$(this).hasClass("url_projet")){
+							e.preventDefault();
+							currentIndex = elements.indexOf($(this).attr("href") );
+							openBox();
+						}
 					};
 		var openBox = function(){
 						if($(window).width()>480){
@@ -70,53 +72,88 @@
 							$(window).scrollTop(0),
 							$overlay.fadeTo("fast",settings.overlayOpacity),
 							$conteiner.fadeIn("normal",function(){
-															//console.log("dd");
 															loadImage();	
 														});
 						}
+						$('.close').on("click.heplBox",closeBox);
 					};
 		var loadImage = function(){
+						console.log(elements[currentIndex]);
 						var $img = $('<img src="'+elements[currentIndex]+'" />')
-												.css({
-													display:"inline-block",
-													borderRadius:5,
-													cursor:"pointer"
-													})
-												.hide()
-												.appendTo("body")
-												.load(function(){
-														$conteiner.animate({
-																			padding: 5,
-																			width: $img.width(),
-																			height: $img.height(),
-																			marginLeft: -($img.width()/2),
-																			top: ($img.height()<$(window).height())? ($(window).height()-$img.height())/2 : 10
-																			},"fast",function(){
-																								$img.remove()
-																									.appendTo($conteiner)
-																									.fadeIn("fast")
-																									.on("click.heplbox",nextImage);
-																								}
-																			);
-													});
+									.css({
+										display:"inline-block",
+										borderRadius:5,
+										cursor:"pointer"
+										})
+									.hide()
+									.appendTo("body")
+									.load(function(){
+										$conteiner.animate({
+											padding: 5,
+											width: $img.width(),
+											height: $img.height(),
+											marginLeft: -($img.width()/2),
+											top: ($img.height()<$(window).height())? ($(window).height()-$img.height())/2 : 10
+											},"fast",function(){
+												$img.remove()
+													.appendTo($conteiner)
+													.fadeIn("fast")
+													.on("click.heplbox",nextImage);
+												}
+											);
+											window.addEventListener("keyup",keyboard,true);
+											
+									});
 					};
 		var closeBox = function(){
 						$conteiner.fadeOut("fast");
 						$overlay.fadeOut("normal",function(){
 													$conteiner.find("img").remove();
+													window.removeEventListener("keyup",keyboard,true);
 													});
 					};
 		var nextImage = function(){
 						if(elements.length===1){ 
 							return closeBox(); 
 						}
-						currentIndex = currentIndex+1<elements.length ? currentIndex+1 : 0;
+						currentIndex = currentIndex+1<elements.length ? currentIndex+1 : 1;
 						$conteiner.find('img').fadeOut("fast",function(){
 																		$conteiner.find("img").remove();
+																		console.log(currentIndex);
 																		loadImage();
 																	});
 					};
-		
+		var previousImage = function(){
+						if(elements.length===1){ 
+							return closeBox(); 
+						}
+						currentIndex = currentIndex>1 ? currentIndex-1 : elements.length-1;
+						$conteiner.find('img').fadeOut("fast",function(){
+																		$conteiner.find("img").remove();
+																		console.log(currentIndex);
+																		loadImage();
+																	});
+					};			
+		var keyboard = function(e){
+			switch(e.keyCode){
+			case 27://escape
+				closeBox();
+				break;
+			case 37://Fleche gauche
+				previousImage();
+				break;
+			case 38://Fleche haut
+				nextImage();
+				break;
+			case 39://fleche droite
+				nextImage();
+				break;
+			case 40://Fleche bas
+				previousImage();
+				break;
+			}
+			
+		}
 		//execution de setup
 		setup();
 		
